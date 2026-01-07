@@ -27,7 +27,7 @@ public class Customer {
     // Primary key for each customer
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private Long id;
+    private String id;
 
     // Require first name
     @NotBlank(message = "First name is required")

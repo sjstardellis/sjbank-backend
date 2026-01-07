@@ -27,7 +27,7 @@ public class Account {
     // Primary key for each account
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private Long id;
+    private String id;
 
     // Public number used for account interactions
     @Column(nullable = false, unique = true, length = 50)
@@ -74,8 +74,7 @@ public class Account {
         transaction.setAccount(this);
     }
 
-    // Different selections for each account
-
+    // Different selections for each account type
     public enum AccountType {
         CHECKING, SAVINGS, BUSINESS, CREDIT
     }
