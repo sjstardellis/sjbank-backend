@@ -56,7 +56,7 @@ public class Transaction {
     private String description;
 
     // For transfers, reference to the target account number
-    @Column(length = 20)
+    @Column(length = 50)
     private String targetAccountNumber;
 
     // Transaction time stamp
