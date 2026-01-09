@@ -53,16 +53,16 @@ public class Customer {
     private String phoneNumber;
 
     // Optional fields
-    @Column(nullable = false)
+    @Column()
     private String address;
 
-    @Column(nullable = false)
+    @Column()
     private String city;
 
-    @Column(nullable = false)
+    @Column()
     private String state;
 
-    @Column(nullable = false)
+    @Column()
     private String zipCode;
 
     // One customer can have many accounts
