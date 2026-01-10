@@ -1,5 +1,6 @@
 package com.sjbank.sjbankbackend.dto;
 
+import com.sjbank.sjbankbackend.entity.Customer;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,8 @@ public class CustomerDTO {
     @Email(message = "Email should be valid")
     private String email;
 
+    // Don't include password in regular DTO
+
     @NotBlank(message = "Phone number is required")
     private String phoneNumber;
 
@@ -35,11 +38,12 @@ public class CustomerDTO {
     private String city;
     private String state;
     private String zipCode;
+    private String role;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     // Constructor from entity
-    public CustomerDTO(com.sjbank.sjbankbackend.entity.Customer customer) {
+    public CustomerDTO(Customer customer) {
         this.id = customer.getId();
         this.firstName = customer.getFirstName();
         this.lastName = customer.getLastName();
@@ -49,6 +53,7 @@ public class CustomerDTO {
         this.city = customer.getCity();
         this.state = customer.getState();
         this.zipCode = customer.getZipCode();
+        this.role = customer.getRole().name();
         this.createdAt = customer.getCreatedAt();
         this.updatedAt = customer.getUpdatedAt();
     }

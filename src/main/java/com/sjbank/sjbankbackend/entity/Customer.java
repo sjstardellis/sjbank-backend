@@ -45,6 +45,11 @@ public class Customer {
     @Column(nullable = false, unique = true)
     private String email;
 
+    // Require password
+    @NotBlank(message = "Password is required")
+    @Column(nullable = false)
+    private String password;
+
     // Require phone number
     @NotBlank(message = "Phone number is required")
     // Regex for valid phone number
@@ -64,6 +69,15 @@ public class Customer {
 
     @Column()
     private String zipCode;
+
+    // Role for authorization
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.CUSTOMER;
+
+    // Account status
+    @Column(nullable = false)
+    private boolean enabled = true;
 
     // One customer can have many accounts
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -91,4 +105,7 @@ public class Customer {
         account.setCustomer(null);
     }
 
+    public enum Role {
+        CUSTOMER, ADMIN
+    }
 }
